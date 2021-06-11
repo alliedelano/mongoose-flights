@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #cfeffa;
+}
+
+a {
+  color: #00B7FF;
+  border: white solid 2px;
+  font-size: 20px;
+}
+
+#add-flight-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-flight-form * {
+  margin: 5px auto 5px 0px;
+}
+
+#nav-bar {
+  background: navy;
+  display: flex;
+  justify-content: space-evenly;
+}
