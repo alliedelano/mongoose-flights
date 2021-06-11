@@ -6,7 +6,6 @@ body {
 
 a {
   color: #00B7FF;
-  border: white solid 2px;
   font-size: 20px;
 }
 
@@ -20,7 +19,17 @@ a {
 }
 
 #nav-bar {
-  background: navy;
+  background: white;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+}
+
+#nav-bar * {
+  margin: auto 20px auto 20px;
+}
+
+#footer {
+  height: 10px;
+  background: navy;
+  margin-top: 50px;
 }
