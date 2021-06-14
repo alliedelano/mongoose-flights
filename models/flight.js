@@ -29,10 +29,19 @@ const flightSchema = new mongoose.Schema({
     },
     departs: {
         type: Date,
-        default: Date(Date.now() + (365 * 24 * 60 * 60 * 1000))
+        default: getDateYear() //worked with Michael and couldn't figure out 
+        // why this wouldn't work so this is fixed in controller function
     },
     destinations: [destinationSchema]
 });
+
+function getDateYear(){
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const day = today.getDate()
+    return new Date(year + 1, month, day);
+}
 
 const Flight = mongoose.model('Flight', flightSchema);
 

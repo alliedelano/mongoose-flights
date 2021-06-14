@@ -13,16 +13,19 @@ function show(req, res){
 }
 
 function create(req, res){
+    if (req.body.departs == ''){
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth();
+        const day = today.getDate();
+        req.body.departs = new Date(year + 1, month, day);
+    }
+
     Flight.create(req.body, function(err, flightDocument){
         console.log(err);
         if(err) return res.render('flights/new');
         res.redirect('/flights');
     })
-    const flight = new Flight(req.body);
-    flight.save(function(err){
-    if (err) return res.redirect('/flights/new');
-    res.redirect('/flights');
-    });
 }
 
 function newFlight(req, res){
@@ -31,7 +34,6 @@ function newFlight(req, res){
 
 function index(req, res){
     Flight.find({}, function(err, allFlightDocuments){
-        console.log(allFlightDocuments);
         res.render('flights/index', {
             flights: allFlightDocuments
         })
