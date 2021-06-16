@@ -62,28 +62,24 @@
     </form>
     <br><br>
     <h2>Display Tickets Here</h2>
-    <% if (flight.tickets.length) { %>
-        <table>
-            <thread>
-                <tr>
-                    <th>Seat</th>
-                    <th>Price</th>
-                </tr>
-            </thread>
-            <tbody>
-                <% flight.tickets.forEach(t => { %>
-                    <tr>
-                        <td><%= t.seat %></td>
-                        <td><%= d.price %> </td>
-                    </tr>
-                <% }); %>
-            </tbody>
-        </table>
-   <% } else {%> 
-    <h5>No tickets yet. Please add using the button below.</h5>
-    <% } %>
-
-  
+    <table>
+        <thread>
+            <tr>
+                <th>Seat</th>
+                <th>Price</th>
+            </tr>
+        </thread>
+        <tbody>
+    <% tickets.forEach(t => { %>
+        <% if (t.flight = flight._id) { %>
+            <tr>
+                <td><%= t.seat %></td>
+                <td>$<%= t.price %></td>
+            </tr>
+        <% } %>
+    <% }); %>   
+        </tbody>
+    </table>
 
     <a href="/flights/<%=flight._id%>/tickets/new">Add Ticket</a>
     <div id="footer"></div>
