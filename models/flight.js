@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 
 const destinationSchema = new mongoose.Schema({
     airport: {
@@ -32,7 +34,8 @@ const flightSchema = new mongoose.Schema({
         default: getDateYear() //worked with Michael and couldn't figure out 
         // why this wouldn't work so this is fixed in controller function
     },
-    destinations: [destinationSchema]
+    destinations: [destinationSchema],
+    tickets: [{type: Schema.Types.ObjectId, ref: 'Ticket'}]
 });
 
 function getDateYear(){

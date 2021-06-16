@@ -21,24 +21,6 @@
         <br>
         <div>Departure Date/Time: <%= flight.departs %></div>
     </section>
-    <br>
-    <h3>Add Destination</h3>
-    <form id="add-flight-destination" method="POST" 
-        action ="/flights/<%=flight._id%>/destinations">
-        <label>Destination Airport</label>
-        <select name="airport">
-            <option value="AUS">AUS</option>
-            <option value="DFW">DFW</option>
-            <option value="DEN">DEN</option>
-            <option value="LAX">LAX</option>
-            <option value="SAN">SAN</option>
-        </select>
-        <br><br>
-        <label>Arrival Date/Time</label>
-        <input type="datetime-local" name="arrival">
-        </label>
-        <input type="submit" value="Add Destination">
-    </form>
     <br> <br>
     <% if (flight.destinations.length) { %>
         <table>
@@ -58,8 +40,52 @@
             </tbody>
         </table>
    <% } else {%> 
-    <h5>No destinations yet. Please add above.</h5>
+    <h5>No destinations yet. Please add using the form below.</h5>
     <% } %> 
+    <br>
+    <h3>Add Destination</h3>
+    <form id="add-flight-destination" method="POST" 
+        action="/flights/<%=flight._id%>/destinations">
+        <label>Destination Airport</label>
+        <select name="airport">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN">DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+        </select>
+        <br><br>
+        <label>Arrival Date/Time</label>
+        <input type="datetime-local" name="arrival">
+        </label>
+        <input type="submit" value="Add Destination">
+    </form>
+    <br><br>
+    <h2>Display Tickets Here</h2>
+    <% if (flight.tickets.length) { %>
+        <table>
+            <thread>
+                <tr>
+                    <th>Seat</th>
+                    <th>Price</th>
+                </tr>
+            </thread>
+            <tbody>
+                <% flight.tickets.forEach(t => { %>
+                    <tr>
+                        <td><%= t.seat %></td>
+                        <td><%= d.price %> </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+   <% } else {%> 
+    <h5>No tickets yet. Please add using the button below.</h5>
+    <% } %>
+
+  
+
+    <a href="/flights/tickets/<%=flight.id%>/new">Add Ticket</a>
     <div id="footer"></div>
 </body>
-</html>
+</html> 
