@@ -35,7 +35,6 @@ const flightSchema = new mongoose.Schema({
         // why this wouldn't work so this is fixed in controller function
     },
     destinations: [destinationSchema],
-    tickets: [{type: Schema.Types.ObjectId, ref: 'Ticket'}]
 });
 
 function getDateYear(){

@@ -14,4 +14,4 @@ const ticketSchema = new Schema({
     flight: [{type: Schema.Types.ObjectId, ref: 'Flight'}],
 });
 
-module.exports = mongoose.model('Ticket', ticketSchema)
+module.exports = mongoose.model('Ticket', ticketSchema);

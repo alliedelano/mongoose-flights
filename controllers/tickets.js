@@ -8,20 +8,25 @@ module.exports = {
 };
 
 function newTicket(req, res){
-    console.log("new ticket function working")
-    Ticket.find({}, function(err, tickets){
-        res.render(`/flights/${flight._id}/tickets/new`, {
-            title: 'Add Ticket',
-            tickets
+    const flight = Flight.findById(req.params.id, function(err, flightDoc){
+        Ticket.find({}, function(err, tickets){
+            res.render("tickets/new", {
+                title: 'Add Ticket',
+                tickets,
+                flight: flightDoc
+            });
         });
-    })
+    });
 }
+
 
 function create(req, res){
     Ticket.create(req.body, function(err, ticket){
-        res.redirect(`/flights/${req.params.id}`);
-    });
-}
+        ticket.flight = flightDoc.id;
+        res.redirect(`/flights/${req.params.id}`)
+    })
+};
+
 
 
 
